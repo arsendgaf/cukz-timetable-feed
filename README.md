@@ -19,7 +19,7 @@ flowchart LR
     D -->|"Differential Sync & Color Code"| E["Google Calendar<br/>(Dedicated Schedule)"]
 ```
 
-1. **Source Publishing**: The university updates `timetable.html` in the student SharePoint folder.
+1. **Source Publishing**: The university updates `Student_Timetables.html` in the student SharePoint folder.
 2. **Automated Forwarding**: Microsoft Power Automate triggers on file update and emails `timetable.html` to Gmail with subject `[TIMETABLE]`.
 3. **Silent Ingestion**: A Gmail filter silences notifications and archives the message while preserving `is:unread` status.
 4. **Script Execution**: A Google Apps Script time-driven trigger runs every 5 minutes, parses the embedded JSON payload, filters classes by student ID, and performs a differential calendar sync.
@@ -183,7 +183,7 @@ bun run push
    * **Library Name**: `Documents`
    ![Trigger.png](public/images/Trigger.png)
 6. Add a **Condition** step:
-   * Check if `File name with extension` is equal to `timetable.html`.
+   * Check if `File name with extension` is equal to `Student_Timetables.html`.
    ![Condition-1.png](public/images/Condition-1.png)
    ![Condition-2.png](public/images/Condition-2.png)
 7. Under the **If yes** branch:
